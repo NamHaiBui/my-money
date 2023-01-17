@@ -1,4 +1,3 @@
-import { Timestamp } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { useFirestore } from "../../hooks/useFirestore"
 import { RadioGroup, ReversedRadioButton } from "react-radio-buttons"
@@ -12,8 +11,8 @@ const categories = [
 export default function TransactionForm({ uid }) {
     const [name, setName] = useState("")
     const [amount, setAmount] = useState("")
-    const [category, setCategory] = useState(null)
-    const [type, setType] = useState(null)
+    const [category, setCategory] = useState("")
+    const [type, setType] = useState("")
 
     const [formError, setFormError] = useState(null)
     const { addDocument, response } = useFirestore("transactionsList")
@@ -29,7 +28,6 @@ export default function TransactionForm({ uid }) {
             uid,
             name,
             amount,
-            createdAt: Timestamp.fromDate(new Date()).toMillis().toString(),
             category: category.value,
             type,
         }
@@ -39,6 +37,8 @@ export default function TransactionForm({ uid }) {
         if (response.success) {
             setName("")
             setAmount("")
+            setType("")
+            setCategory("")
         }
     }, [response.success])
     return (
@@ -65,9 +65,9 @@ export default function TransactionForm({ uid }) {
                 </label>
                 <label>
                     <RadioGroup
-                        onChange={(e) => setType(e)}
-                        value={type}
+                        onChange={(value) => setType(value)}
                         horizontal
+                        required
                     >
                         <ReversedRadioButton value="income">
                             Income
@@ -78,6 +78,7 @@ export default function TransactionForm({ uid }) {
                     </RadioGroup>
                 </label>
                 <Select
+                    required
                     onChange={(option) => setCategory(option)}
                     options={categories}
                 />
