@@ -13,6 +13,7 @@ export default function TransactionForm({ uid }) {
     const [amount, setAmount] = useState("")
     const [category, setCategory] = useState("")
     const [type, setType] = useState("")
+    const [description, setDescription] = useState("")
 
     const [formError, setFormError] = useState(null)
     const { addDocument, response } = useFirestore("transactionsList")
@@ -29,8 +30,10 @@ export default function TransactionForm({ uid }) {
             name,
             amount,
             category: category.value,
+            description,
             type,
         }
+        console.log(newTrans)
         addDocument(newTrans)
     }
     useEffect(() => {
@@ -82,6 +85,14 @@ export default function TransactionForm({ uid }) {
                     onChange={(option) => setCategory(option)}
                     options={categories}
                 />
+                <label>
+                    <span>Description ($):</span>
+                    <textarea
+                        type="text"
+                        onChange={(e) => setDescription(e.target.value)}
+                        value={description}
+                    ></textarea>
+                </label>
                 <button className="btn">Add Transaction</button>
                 {formError && <p className="error">{formError}</p>}
             </form>

@@ -10,10 +10,10 @@ export default function SpendManage({ documents }) {
         if (documents) {
             documents.forEach((transaction) => {
                 if (transaction.type === "expense") {
-                    total += parseInt(transaction.amount)
+                    total += parseFloat(transaction.amount)
                 }
                 if (transaction.type === "income") {
-                    total -= parseInt(transaction.amount)
+                    total -= parseFloat(transaction.amount)
                 }
             })
         }

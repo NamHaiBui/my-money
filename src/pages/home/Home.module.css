@@ -64,7 +64,19 @@
  .sidebar aside li {
      margin: 10px;
  }
-
+ .sidebar textarea{
+  display: block;
+     width: 100%;
+     height:50%;
+     padding: 10px;
+     margin-top: 8px;
+     box-sizing: border-box;
+     border: 0;
+     border-radius: 4px;
+     color: #555;
+     font-size: 1.2em;
+  resize:none;
+ }
  /* Transactions */
 
  .transactions .name {
@@ -116,20 +128,7 @@
   cursor: pointer;
   transition: all 0.15s ease-out;
 }
-.transactions-heading {
-  display: inline-block;
-  align-self: flex-start;
-  position: relative;
-  margin: 0 0 30px -10px;
-  padding: 0 10px;
-  background-color: #f9f9f9;
-  font-family: "Playfair Display", serif;
-  font-size: 32px;
-  font-weight: 500;
-  font-style: italic;
-  text-align: center;
-  color: #c69e3d;
-}
+
  .transaction-group-heading {
   display: block;
   width: 100%;
@@ -151,7 +150,7 @@
 .transaction + .transaction {
   margin-top: 10px;
 }
-.transaction:focus,
+
 .transaction.focused {
   background-color: #edf8ff;
   box-shadow: inset 0 0 0 3px #c0e2f8, 0 10px 20px -10px rgba(0, 0, 0, 0.25);
@@ -159,9 +158,7 @@
   outline: 0 !important;
   z-index: 2;
 }
-.transaction + .transaction:focus,
 .transaction + .transaction.focused,
-.transaction:focus + .transaction,
 .transaction.focused + .transaction {
   margin-top: 20px;
 }
@@ -191,7 +188,7 @@
   /* fallback for older browsers */
   gap: 5px;
   flex: 1;
-  padding: 0 20px;
+  padding: 10px 20px;
 }
 .transaction-name-category > .transaction-name {
   font-size: 20px;
@@ -204,7 +201,7 @@
   color: #939fb4;
 }
 .transaction-amount {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
 }
 .transaction-amount.income {
@@ -223,4 +220,22 @@
   max-height: 0;
   opacity: 0;
   transition: inherit;
+}
+.transaction.focused .transaction-details {
+  padding-top: 30px;
+  max-height: 150px;
+  opacity: 1;
+}
+.transaction-details strong {
+  font-size: 15px;
+  font-weight: 500;
+  color: #75849f;
+}
+.transaction-details span {
+  font-size: 15px;
+  font-weight: 400;
+  color: #282730;
+}
+.transaction-details .transaction-id {
+  font-family: "Roboto Mono", consolas, courier, monospace;
 }
