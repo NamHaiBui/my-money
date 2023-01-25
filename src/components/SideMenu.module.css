@@ -1,0 +1,122 @@
+.side-nav-container{
+  background-color: #1f9751;
+  width: 220px;
+  position:relative;
+  color: #effaf0;
+  transition: 0.4s;
+}
+.side-nav-container.side-nav-container-NS{
+  width:5em;
+}
+.nav-upper, .nav-heading, .nav-menu, .menu-item{
+  display:grid;
+}
+
+.nav-brand{
+  display: flex;
+}
+/* .nav-brand icon{
+  width: 40px;
+  padding: 0 10px;
+} */
+.stack{
+  position: absolute;
+  right: 0;
+
+  background:none;
+  border: none;
+  cursor: pointer;
+  
+  margin: auto -35px;
+  background-color: #62ba86;
+  border: 2px solid #fff;
+  padding: 20px;
+  border-radius: 50%;
+  height: 71px;
+  width: 74px;
+}
+
+.stack span{
+  display: block;
+  margin-top: 5px;
+  background-color: #effaf0;
+  border-radius: 15px;
+  height: 4px;
+  width: 30px;
+  
+  transition: 0.4s;
+}
+.stack:hover span{
+  margin: auto
+}
+
+/* in */
+.stack.in:hover span:nth-child(1){
+  width: 25px;
+  transform: translate(-3px,8px) rotate(30deg);
+}
+.stack.in:hover span:nth-child(2){
+  display:none;
+}
+.stack.in:hover span:nth-child(3){
+  width: 25px;
+  transform: translate(-3px,-8px) rotate(-30deg);
+}
+/* out */
+.stack.out:hover span:nth-child(1){
+  width: 25px;
+  transform: translate(0px,8px) rotate(-30deg);
+}
+.stack.out:hover span:nth-child(2){
+  display:none;
+}
+.stack.out:hover span:nth-child(3){
+  width: 25px;
+  transform: translate(0px,-8px) rotate(30deg);
+}
+/*  */
+.nav-menu{
+  grid-template-rows: 1fr;
+  margin-top:80px;
+}
+.menu-item{
+  height: 50px;
+  display: flex;
+  color: #effaf0;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: auto 40px 20px 5px ;
+  border-radius: 10px;
+  padding-left: 0;
+  position: relative;
+  align-items: center;
+  /* background-size: 30%; */
+}
+.menu-item.menu-item-NS{
+  margin:auto;
+  width: 4em;
+}
+.menu-item .active{
+  background-color: #62ba86;
+}
+.menu-item:hover{
+  background-color: #62ba86;
+  background-size: 0%;
+}
+.menu-item img{
+  width: 30px;
+  padding: 0 20px;
+}
+.tooltip{
+  display:none;
+  position:absolute;
+  left: 99%;
+  bottom: 80%;
+
+  width: auto;
+  padding: 4px 8px;
+  border-radius: 15px 15px 15px 0;
+  white-space: nowrap;
+  border: 2px solid #effaf0;
+  background-color: #1f9751
+}

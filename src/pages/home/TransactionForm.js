@@ -21,8 +21,11 @@ export default function TransactionForm({ uid }) {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (!category) {
-            setFormError("Please select a project category.")
+        if (category === "") {
+            setFormError("Please select a transaction category.")
+        }
+        if (type === "") {
+            setFormError("Please select a type category.")
             return
         }
         const newTrans = {
@@ -33,7 +36,7 @@ export default function TransactionForm({ uid }) {
             description,
             type,
         }
-        console.log(newTrans)
+        // console.log(newTrans)
         addDocument(newTrans)
     }
     useEffect(() => {
@@ -42,6 +45,8 @@ export default function TransactionForm({ uid }) {
             setAmount("")
             setType("")
             setCategory("")
+            setDescription("")
+            setFormError("")
         }
     }, [response.success])
     return (
@@ -83,6 +88,7 @@ export default function TransactionForm({ uid }) {
                 <Select
                     required
                     onChange={(option) => setCategory(option)}
+                    value={category}
                     options={categories}
                 />
                 <label>

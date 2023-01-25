@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 /* base styles */
+.mainPage{
+  display:flex;
+  flex-direction: row;
+}
 body {
   font-family: Poppins, sans-serif;
   margin: 0;
   font-size: 1.1em;
+  height: 100%;
 }
 ul, li, p, h1, h2, h3, h4 {
   margin: 0;
@@ -12,6 +17,10 @@ ul, li, p, h1, h2, h3, h4 {
 }
 ul {
   list-style-type: none;
+}
+.error{
+  color:#fff;
+  font-size: 1em;
 }
 .btn {
   background: none;

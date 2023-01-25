@@ -177,22 +177,6 @@ export default function TransactionList({ transactions }) {
                                 </div>
 
                                 <div className={styles["transaction-details"]}>
-                                    {transaction.description !== "" && (
-                                        <>
-                                            <strong
-                                                className={
-                                                    styles["datetime-label"]
-                                                }
-                                            >
-                                                Description
-                                            </strong>
-                                            <span
-                                                className={styles["datetime"]}
-                                            >
-                                                {transaction.description}
-                                            </span>
-                                        </>
-                                    )}
                                     <strong
                                         className={styles["datetime-label"]}
                                     >
@@ -212,6 +196,22 @@ export default function TransactionList({ transactions }) {
                                         {Math.abs(date.getTimezoneOffset()) /
                                             60}
                                     </span>
+                                    {transaction.description !== "" && (
+                                        <>
+                                            <strong
+                                                className={
+                                                    styles["datetime-label"]
+                                                }
+                                            >
+                                                Description
+                                            </strong>
+                                            <span
+                                                className={styles["datetime"]}
+                                            >
+                                                {transaction.description}
+                                            </span>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         )
