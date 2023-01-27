@@ -1,7 +1,6 @@
 import { useContext } from "react"
 import { useReducer } from "react"
 import { createContext } from "react"
-import useLocalStorage from "../hooks/useLocalStorage"
 
 export const UNCATEGORIZED_BUDGET_ID = "uncategorized"
 export const BudgetContext = createContext()
@@ -17,14 +16,14 @@ export const budgetReducer = (state, action) => {
 }
 
 export const BudgetContextProvider = ({ children }) => {
-    cosnt[(state, dispatch)] = useReducer(budgetReducer, {
-        transaction: null,
-        dataRetrieved: false,
+    // Collect transactions
+    // Refactor transactions to create budgets
+    const [state, dispatch] = useReducer(budgetReducer, {
+        budgets: null,
+        transactions: null,
     })
-    const [budgets, setBudgets] = useLocalStorage()
-    const [expenses, setExpenses] = setState()
 
-    const getBudgetExpenses = (budgetId) => {
+    const getBudgetTransactions = (budgetId) => {
         return expenses.filter((expense) => expense.budgetId === budgetId)
     }
     const addBudget = (name, max) => {
@@ -51,8 +50,15 @@ export const BudgetContextProvider = ({ children }) => {
             }
         )
     }
+    const value = {
+        budgetList: state.budget,
+        transactions: state.transactions,
+        getBudgetTransactions,
+        addBudget,
+        deleteBudget,
+    }
     return (
-        <BudgetContext.Provider value={{ ...state, dispatch }}>
+        <BudgetContext.Provider value={value}>
             {children}
         </BudgetContext.Provider>
     )
